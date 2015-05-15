@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Lego.Ev3.Core;
+using Lego.Ev3.Desktop;
 
 namespace ConsoleApplication1
 {
@@ -10,6 +8,13 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            get_motor_running();
+        }
+
+        private static async Task get_motor_running()
+        {
+            var brick = new Brick(new BluetoothCommunication("COM4"));
+            await brick.DirectCommand.PlayToneAsync(100, 1000, 300);
         }
     }
 }
